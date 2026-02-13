@@ -7,6 +7,17 @@ Production URL:
 
 ---
 
+## ⚠️ Important: Lock File Issue
+
+If you see an error like `ERR_PNPM_OUTDATED_LOCKFILE`, please run:
+```bash
+pnpm install --no-frozen-lockfile
+```
+
+See [LOCKFILE_FIX.md](./LOCKFILE_FIX.md) for complete instructions.
+
+---
+
 ## 📌 Overview
 
 Villa del Sol RMS is a scalable, real-time, multi-branch Restaurant Management System designed to support:
