@@ -1,0 +1,44 @@
+export const ORDER_STATUSES = {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  PREPARING: 'PREPARING',
+  READY: 'READY',
+  SERVED: 'SERVED',
+  CANCELLED: 'CANCELLED',
+  COMPLETED: 'COMPLETED',
+} as const;
+
+export const PAYMENT_STATUSES = {
+  PENDING: 'PENDING',
+  PROCESSING: 'PROCESSING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED',
+  REFUNDED: 'REFUNDED',
+} as const;
+
+export const KITCHEN_STATUSES = {
+  NEW: 'NEW',
+  ACCEPTED: 'ACCEPTED',
+  PREPARING: 'PREPARING',
+  READY_FOR_PICKUP: 'READY_FOR_PICKUP',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED',
+} as const;
+
+export const USER_ROLES = {
+  ADMIN: 'ADMIN',
+  MANAGER: 'MANAGER',
+  WAITER: 'WAITER',
+  CHEF: 'CHEF',
+  CASHIER: 'CASHIER',
+} as const;
+
+export const SOCKET_NAMESPACES = {
+  ORDERS: '/orders',
+  KITCHEN: '/kitchen',
+  PAYMENTS: '/payments',
+} as const;
+
+export const TAX_RATE = 0.08; // 8% tax
+export const CURRENCY = 'USD';
+export const CURRENCY_SYMBOL = '$';
