@@ -2,6 +2,7 @@
   "name": "villa-del-sol-rms",
   "version": "1.0.0",
   "description": "Multi-branch Restaurant Management System",
+  "packageManager": "pnpm@10.0.0",
   "private": true,
   "workspaces": [
     "packages/*",

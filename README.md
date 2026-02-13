@@ -7,14 +7,21 @@ Production URL:
 
 ---
 
-## ⚠️ Important: Lock File Issue
+## ⚠️ Build Fix Required (5 minutes)
 
-If you see an error like `ERR_PNPM_OUTDATED_LOCKFILE`, please run:
+**If Vercel build is failing** with `ERR_PNPM_OUTDATED_LOCKFILE`:
+
+Run locally **once**, then push:
 ```bash
-pnpm install --no-frozen-lockfile
+corepack enable
+corepack prepare pnpm@10.0.0 --activate
+pnpm install
+git add pnpm-lock.yaml
+git commit -m "chore: regenerate pnpm lockfile"
+git push
 ```
 
-See [LOCKFILE_FIX.md](./LOCKFILE_FIX.md) for complete instructions.
+**Why:** New apps were added but the lockfile wasn't regenerated. See [FIX_LOCKFILE.md](./FIX_LOCKFILE.md) for detailed steps.
 
 ---
 
