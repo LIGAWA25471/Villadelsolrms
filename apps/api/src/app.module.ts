@@ -3,9 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './modules/auth/auth.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { MenuModule } from './modules/menu/menu.module';
-import { PaymentsModule } from './modules/payments/payments.module';
-import { GatewayModule } from './modules/gateway/gateway.module';
+import { PaymentModule } from './modules/payment/payment.module';
+import { KitchenModule } from './modules/kitchen/kitchen.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { RealtimeGateway } from './gateways/realtime.gateway';
 
 @Module({
   imports: [
@@ -17,8 +18,9 @@ import { PrismaModule } from './prisma/prisma.module';
     AuthModule,
     OrdersModule,
     MenuModule,
-    PaymentsModule,
-    GatewayModule,
+    PaymentModule,
+    KitchenModule,
   ],
+  providers: [RealtimeGateway],
 })
 export class AppModule {}

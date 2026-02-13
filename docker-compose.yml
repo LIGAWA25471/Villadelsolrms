@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: rms_dev
+      POSTGRES_USER: rms_user
+      POSTGRES_PASSWORD: rms_password
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - '3001:3001'
+    environment:
+      DATABASE_URL: postgresql://rms_user:rms_password@postgres:5432/rms_dev
+      JWT_SECRET: dev-secret-key
+      PORT: 3001
+    depends_on:
+      - postgres
+    volumes:
+      - ./apps/api/src:/app/apps/api/src
+
+  pos:
+    build:
+      context: .
+      dockerfile: apps/pos/Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+      NEXT_PUBLIC_WS_URL: http://localhost:3001
+    depends_on:
+      - api
+
+  kds:
+    build:
+      context: .
+      dockerfile: apps/kds/Dockerfile
+    ports:
+      - '3002:3002'
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+      NEXT_PUBLIC_WS_URL: http://localhost:3001
+    depends_on:
+      - api
+
+  qr:
+    build:
+      context: .
+      dockerfile: apps/qr/Dockerfile
+    ports:
+      - '3003:3003'
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
