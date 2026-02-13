@@ -45,7 +45,7 @@ export default function QRMenu() {
   };
 
   const filteredItems = selectedCategory
-    ? menuItems.filter((item) => item.categoryId === selectedCategory)
+    ? menuItems.filter((item) => item.category?.name === selectedCategory || (typeof item.category === 'string' && item.category === selectedCategory))
     : menuItems;
 
   const addToCart = (item: MenuItem) => {
