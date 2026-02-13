@@ -9,6 +9,7 @@
     "apps/*"
   ],
   "scripts": {
+    "postinstall": "pnpm db:generate",
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
     "start": "turbo run start",
